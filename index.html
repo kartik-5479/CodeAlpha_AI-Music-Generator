@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jarvis Music Studio</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+</head>
+<body>
+    <div id="loadingScreen" class="loading-screen">
+        <div class="pulse-logo">J</div>
+        <div class="loading-bars"><span></span><span></span><span></span><span></span></div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">J</div>
+            <div>
+                <strong>Jarvis</strong>
+                <span>AI Music Studio</span>
+            </div>
+        </div>
+        <nav>
+            <button class="nav-link active" data-section="studio">Studio</button>
+            <button class="nav-link" data-section="library">Library</button>
+            <button class="nav-link" data-section="analytics">Analytics</button>
+            <button class="nav-link" data-section="dataset">Dataset</button>
+        </nav>
+        <button id="themeToggle" class="ghost-button">Light Mode</button>
+    </aside>
+
+    <main class="app-shell">
+        <section id="studio" class="view active">
+            <header class="hero">
+                <div class="hero-copy">
+                    <span class="eyebrow">LSTM MIDI composer</span>
+                    <h1>Generate studio-ready musical ideas from prompts.</h1>
+                    <p>Train on MIDI datasets, generate fresh melodies, save history, and manage your AI music library.</p>
+                </div>
+                <div class="wave-orbit" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </header>
+
+            <section class="studio-grid">
+                <form id="generateForm" class="panel generator-panel">
+                    <label>Prompt
+                        <textarea id="prompt" rows="4" placeholder="Generate relaxing piano music for studying"></textarea>
+                    </label>
+                    <div class="control-grid">
+                        <label>Genre<select id="genre"></select></label>
+                        <label>Mood<select id="mood"></select></label>
+                        <label>Instrument<select id="instrument"></select></label>
+                        <label>Duration
+                            <input id="duration" type="range" min="10" max="180" value="45">
+                            <span id="durationValue">45s</span>
+                        </label>
+                    </div>
+                    <button class="primary-button" type="submit">Generate Music</button>
+                </form>
+
+                <section class="panel player-panel">
+                    <div class="panel-title">
+                        <div>
+                            <span class="eyebrow">Now playing</span>
+                            <h2 id="currentTitle">No track selected</h2>
+                        </div>
+                        <button id="loopButton" class="icon-button" title="Loop">Loop</button>
+                    </div>
+                    <div id="waveform" class="waveform"></div>
+                    <div class="player-controls">
+                        <button id="playButton">Play</button>
+                        <button id="pauseButton">Pause</button>
+                        <button id="stopButton">Stop</button>
+                        <label>Volume<input id="volume" type="range" min="0" max="1" value="0.8" step="0.01"></label>
+                    </div>
+                    <div id="downloadLinks" class="download-links"></div>
+                </section>
+            </section>
+        </section>
+
+        <section id="library" class="view">
+            <div class="section-header">
+                <div><span class="eyebrow">Saved generations</span><h2>Music Library</h2></div>
+                <div class="search-row">
+                    <input id="search" type="search" placeholder="Search prompt, genre, mood">
+                    <button id="favoritesOnly" class="ghost-button">Favorites</button>
+                </div>
+            </div>
+            <div id="songList" class="song-list"></div>
+        </section>
+
+        <section id="analytics" class="view">
+            <div class="section-header"><div><span class="eyebrow">Usage insights</span><h2>Analytics Dashboard</h2></div></div>
+            <div class="stats-grid">
+                <div class="stat"><span>Songs Generated</span><strong id="statSongs">0</strong></div>
+                <div class="stat"><span>Top Genre</span><strong id="statGenre">None</strong></div>
+                <div class="stat"><span>Top Mood</span><strong id="statMood">None</strong></div>
+                <div class="stat"><span>Listening Time</span><strong id="statListening">0s</strong></div>
+            </div>
+            <div class="chart-grid">
+                <div class="panel"><canvas id="genreChart"></canvas></div>
+                <div class="panel"><canvas id="moodChart"></canvas></div>
+            </div>
+        </section>
+
+        <section id="dataset" class="view">
+            <div class="section-header"><div><span class="eyebrow">Training data</span><h2>MIDI Dataset Upload</h2></div></div>
+            <form id="datasetForm" class="panel upload-panel">
+                <input id="datasetFiles" type="file" accept=".mid,.midi" multiple>
+                <button class="primary-button" type="submit">Upload MIDI Files</button>
+                <p>After uploading, run <code>python train_model.py</code> to train <code>models/music_model.h5</code>.</p>
+            </form>
+        </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

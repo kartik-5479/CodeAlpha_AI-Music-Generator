@@ -1,0 +1,10 @@
+Flask==3.0.3
+Werkzeug==3.0.3
+tensorflow==2.16.1
+keras==3.3.3
+music21==9.1.0
+pretty_midi==0.2.10
+numpy==1.26.4
+pandas==2.2.2
+h5py==3.11.0
+python-dotenv==1.0.1

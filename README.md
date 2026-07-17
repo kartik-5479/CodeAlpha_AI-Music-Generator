@@ -1,102 +1,168 @@
-# Jarvis Music Studio
+<div align="center">
 
-Jarvis Music Studio is a Flask-based AI music generation web app for MIDI dataset upload, music21 preprocessing, LSTM training, MIDI generation, playback management, history, favorites, and analytics.
+# 🎵 AI Music Generator
 
-## Features
+<img src="assets/banner.gif" alt="AI Music Generator Banner" width="100%"/>
 
-- Flask backend with SQLite persistence
-- MIDI upload for `.mid` and `.midi` files
-- music21 note and chord extraction
-- TensorFlow/Keras LSTM model with dropout, dense layers, early stopping, and checkpoints
-- `models/music_model.h5` training output
-- Prompt, genre, mood, instrument, and duration based generation
-- Graceful fallback composer when no trained model exists
-- Generated MIDI downloads
-- Optional WAV/MP3 export when FluidSynth, FFmpeg, and `soundfont.sf2` are available
-- WaveSurfer.js player for rendered audio
-- Library with search, rename, favorite, delete, and download
-- Chart.js analytics dashboard
-- Dark/light responsive UI
+### 🎼 Compose Original Music with Artificial Intelligence
 
-## Folder Structure
+Generate unique melodies using Deep Learning (LSTM), MIDI datasets, and Flask.
 
-```text
-jarvis_music_studio/
-  app.py
-  train_model.py
-  database.db              # created automatically
-  requirements.txt
-  README.md
-  dataset/                 # add training MIDI files here
-  models/                  # music_model.h5 and note_mapping.json
-  generated_music/         # generated MIDI/WAV/MP3 files
-  templates/
-  static/
-  services/
-```
+<p>
 
-## Installation
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge&logo=flask)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-FF6F00?style=for-the-badge&logo=tensorflow)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-```bash
-cd jarvis_music_studio
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
+</p>
 
-On macOS/Linux, activate with:
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=25&pause=1000&center=true&vCenter=true&width=650&lines=Generate+Music+Using+Artificial+Intelligence;Deep+Learning+Powered+Composition;LSTM+Neural+Network+Music+Generator;Python+%7C+Flask+%7C+TensorFlow"/>
 
-```bash
-source .venv/bin/activate
-```
+</div>
 
-## Train the LSTM Model
+---
 
-Add MIDI files into `dataset/`, then run:
+# 🎯 Project Overview
 
-```bash
-python train_model.py
-```
+AI Music Generator is an intelligent web application that composes original MIDI music using **Deep Learning**.
 
-The training script parses MIDI files with music21, extracts notes and chords, builds sequences, and saves:
+The system learns musical structures from uploaded MIDI datasets using an **LSTM Neural Network** and generates completely new melodies based on user preferences.
 
-```text
-models/music_model.h5
-models/note_mapping.json
-```
+Along with AI music generation, the application provides a beautiful interface for organizing, downloading, and managing generated compositions.
 
-If the dataset is too small, the script exits with a clear message. For a college demo, use at least several MIDI files from one style so the model has patterns to learn.
+---
 
-## Run the Web App
+# ✨ Features
 
-```bash
-python app.py
-```
+<table>
+<tr>
 
-Open:
+<td width="50%">
 
-```text
-http://127.0.0.1:5000
-```
+### 🎼 AI Music Composer
 
-You can generate music immediately. If no trained model is available, the app uses a deterministic rule-based composer so the project remains demo-ready. Once `music_model.h5` exists, generation will attempt to use the trained LSTM.
+- Generate unique melodies
+- LSTM Neural Network
+- Intelligent sequence prediction
+- MIDI generation
 
-## WAV and MP3 Export
+</td>
 
-MIDI generation works out of the box. WAV/MP3 export requires:
+<td width="50%">
 
-- FluidSynth installed and available on PATH
-- FFmpeg installed and available on PATH
-- A General MIDI soundfont saved as `soundfont.sf2` inside `jarvis_music_studio/`
+### 🎵 Dataset Processing
 
-When those tools are not present, the app still saves and downloads MIDI files.
+- Upload MIDI files
+- Automatic preprocessing
+- Note extraction
+- Chord recognition
 
-## Notes for Submission
+</td>
 
-This project demonstrates the complete workflow:
+</tr>
 
-```text
-Dataset -> Preprocessing -> Training -> Generation -> MIDI Output -> Playback/Download -> Analytics
-```
+<tr>
 
-SQLite is initialized automatically as `database.db`. Generated files are stored in `generated_music/`.
+<td>
+
+### 🎹 Smart Customization
+
+- Mood Selection
+- Genre Selection
+- Instrument Choice
+- Duration Control
+- Prompt-based generation
+
+</td>
+
+<td>
+
+### 📚 Music Library
+
+- Save music
+- Download songs
+- Rename tracks
+- Delete files
+- Favorites
+- Search music
+
+</td>
+
+</tr>
+
+</table>
+
+---
+
+# ⚙️ Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Programming | Python |
+| Backend | Flask |
+| Frontend | HTML, CSS, JavaScript |
+| AI Framework | TensorFlow |
+| Deep Learning | Keras |
+| Model | LSTM |
+| Music Processing | music21 |
+| Database | SQLite |
+| Visualization | Chart.js |
+| Audio | WaveSurfer.js |
+
+---
+
+# 🌟 Highlights
+
+- 🎼 Deep Learning Music Generation
+- 🤖 LSTM Neural Network
+- 🎹 Intelligent Melody Creation
+- 📈 Analytics Dashboard
+- 🌙 Dark Mode UI
+- 📚 Music Library
+- ❤️ Favorite Songs
+- 🔍 Search Functionality
+- 🎵 MIDI Download
+- ⚡ Fast Flask Backend
+
+---
+
+# 📈 Learning Outcomes
+
+This project demonstrates practical implementation of
+
+- Artificial Intelligence
+- Deep Learning
+- Sequence Prediction
+- LSTM Networks
+- Flask Development
+- MIDI Processing
+- Database Design
+- Frontend Development
+- Machine Learning Pipeline
+
+---
+
+# 🔮 Future Improvements
+
+- 🎤 AI Lyrics Generator
+- 🎼 Transformer-based Music Generation
+- 🎧 MP3 Export
+- ☁️ Cloud Deployment
+- 📱 Mobile Responsive Design
+- 🎵 Piano Roll Visualization
+- 🎙️ Voice-Controlled Music Generation
+- 🤖 Generative AI Integration
+
+---
+
+<div align="center">
+
+### ⭐ If you like this project, don't forget to leave a Star!
+
+### Made with ❤️ using Python • Flask • TensorFlow
+
+</div>
